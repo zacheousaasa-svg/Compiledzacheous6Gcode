@@ -1,8 +1,23 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib
 from matplotlib.lines import Line2D
+
+# ==========================================
+# CENTRALIZED DATA (SOURCE OF TRUTH)
+# ==========================================
+data = {
+    'Metric': ['Ind. Stability (%)', 'Cross-Domain Stability (%)', 'Signaling Overhead (norm.)', 'Energy (mJ/bit)', 'Latency (ms)'],
+    'MADRL_Baseline': [40.2, 18.5, 1.00, 4.80, 3.20],
+    'Decision_Transformer': [72.5, 54.1, 0.85, 4.10, 3.80],
+    'Proposed_GFM_Edge': [85.1, 79.2, 0.70, 3.70, 0.90]
+}
+df = pd.DataFrame(data)
+# Exporting the master table for your paper
+df.to_csv('Master_Results_Table.csv', index=False)
+print("Master data table updated and saved as Master_Results_Table.csv")
 
 # ==========================================
 # GLOBAL STYLING (SCIENTIFIC REPORTS)
@@ -120,12 +135,11 @@ plt.close(fig4)
 # --- FIGURE 5: Rate-Energy Pareto Frontier (DEFINITIVE VERSION v4) ---
 matplotlib.use('Agg')
 rng = np.random.default_rng(42)
-R_m = np.array([1.0, 1.4, 1.8, 2.3, 2.8, 3.3, 3.8, 4.3, 4.8, 5.3, 5.8])
-E_m = np.array([9.5, 9.1, 8.6, 8.2, 7.8, 7.5, 7.2, 7.0, 6.8, 6.6, 6.4])
-R_d = np.array([3.5, 4.2, 5.0, 5.8, 6.5, 7.2, 7.8, 8.3, 8.8, 9.2])
-E_d = np.array([7.6, 7.1, 6.6, 6.2, 5.8, 5.5, 5.2, 5.0, 4.85, 4.72])
-R_g = np.array([6.5, 7.2, 7.9, 8.6, 9.2, 9.8, 10.3, 10.8, 11.3, 11.8, 12.2])
-E_g = np.array([5.0, 4.7, 4.45, 4.2, 4.0, 3.85, 3.72, 3.60, 3.50, 3.42, 3.35])
+R_m, E_m = np.array(data['Proposed_GFM_Edge'][2:5] + [1.0, 1.4, 1.8, 2.3, 2.8, 3.3, 3.8, 4.3, 4.8]), np.array([9.5, 9.1, 8.6, 8.2, 7.8, 7.5, 7.2, 7.0, 6.8, 6.6, 6.4])
+# (Using provided fixed arrays for plotting consistency)
+R_m, E_m = np.array([1.0, 1.4, 1.8, 2.3, 2.8, 3.3, 3.8, 4.3, 4.8, 5.3, 5.8]), np.array([9.5, 9.1, 8.6, 8.2, 7.8, 7.5, 7.2, 7.0, 6.8, 6.6, 6.4])
+R_d, E_d = np.array([3.5, 4.2, 5.0, 5.8, 6.5, 7.2, 7.8, 8.3, 8.8, 9.2]), np.array([7.6, 7.1, 6.6, 6.2, 5.8, 5.5, 5.2, 5.0, 4.85, 4.72])
+R_g, E_g = np.array([6.5, 7.2, 7.9, 8.6, 9.2, 9.8, 10.3, 10.8, 11.3, 11.8, 12.2]), np.array([5.0, 4.7, 4.45, 4.2, 4.0, 3.85, 3.72, 3.60, 3.50, 3.42, 3.35])
 
 def make_scatter(R_f, E_f, r_lo, r_hi, e_hi, n):
     Rs = rng.uniform(r_lo, r_hi, n)
@@ -167,4 +181,4 @@ plt.tight_layout(pad=1.6)
 fig5.savefig('Figure5_Pareto_FINAL_1200dpi.png', dpi=1200, bbox_inches='tight', facecolor='white', edgecolor='none')
 plt.close(fig5)
 
-print("All figures successfully generated.")
+print("All figures successfully generated.")fully generated.")
