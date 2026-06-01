@@ -21,26 +21,6 @@ plt.rcParams.update({
 
 print("Generating high-visibility manuscript figures...")
 
-# --- FIGURE 1: RIS-assisted SAGIN Architecture ---
-fig1, ax1 = plt.subplots(figsize=(9, 7))
-bs, ris, user_k, user_other = (0.1, 0.5), (0.45, 0.8), (0.7, 0.3), (0.85, 0.4)
-ax1.plot(bs[0], bs[1], '^k', markersize=18, label='Base Station (BS)')
-ax1.plot(ris[0], ris[1], 'sb', markersize=18, label=r'RIS ($M$ elements)')
-ax1.plot(user_k[0], user_k[1], 'or', markersize=14, label='User $k$')
-ax1.plot(user_other[0], user_other[1], 'or', markersize=9, alpha=0.5)
-ax1.annotate('', xy=ris, xytext=bs, arrowprops=dict(arrowstyle="-|>", color='blue', lw=3, mutation_scale=15))
-ax1.annotate('', xy=user_k, xytext=ris, arrowprops=dict(arrowstyle="-|>", color='blue', lw=3, mutation_scale=15))
-ax1.annotate('', xy=user_k, xytext=bs, arrowprops=dict(arrowstyle="-|>", color='gray', linestyle='--', lw=2, mutation_scale=15))
-ax1.text(0.24, 0.70, r'$\mathbf{G}$', color='blue', fontsize=18, weight='bold')
-ax1.text(0.61, 0.60, r'$\mathbf{h}_{r,k}^H$', color='blue', fontsize=18, weight='bold')
-ax1.text(0.38, 0.34, r'$\mathbf{h}_{d,k}^H$', color='black', fontsize=18, weight='bold')
-ax1.set_xlim(0, 1)
-ax1.set_ylim(0, 1)
-ax1.axis('off')
-ax1.legend(loc='lower left', frameon=False, prop={'weight': 'bold', 'size': 13})
-fig1.tight_layout()
-fig1.savefig('Fig1_SAGIN_Architecture.png', dpi=1200, bbox_inches='tight')
-plt.close(fig1)
 
 # --- FIGURE 2: Lightweight GFM Distillation ---
 fig2, ax2 = plt.subplots(figsize=(11, 4.5))
@@ -212,38 +192,4 @@ fig6.tight_layout()
 fig6.savefig('Fig3b_Methodology_Flowchart.png', dpi=1200, bbox_inches='tight')
 plt.close(fig6)
 
-# --- FIGURE 4: Zero-Shot Adaptability Analysis ---
-fig4, ax4 = plt.subplots(figsize=(8, 6))
-topologies = np.arange(1, 11)
-madrl_baseline = np.array([0.52, 0.55, 0.50, 0.53, 0.56, 0.54, 0.51, 0.57, 0.52, 0.54])
-gfm_edge = np.array([0.75, 0.79, 0.72, 0.77, 0.81, 0.78, 0.74, 0.83, 0.75, 0.78])
-ax4.plot(topologies, madrl_baseline, marker='o', markersize=8, linewidth=2.5, label='MADRL (Baseline)', color='#1f77b4')
-ax4.plot(topologies, gfm_edge, marker='s', markersize=8, linewidth=2.5, label='Proposed GFM-Edge', color='#ff7f0e')
-ax4.set_xlabel('Unseen Network Topology Index', weight='bold', labelpad=10)
-ax4.set_ylabel('Adaptability Score (Normalized)', weight='bold', labelpad=10)
-ax4.set_xticks(topologies)
-ax4.set_ylim(0.45, 0.90)
-for label in (ax4.get_xticklabels() + ax4.get_yticklabels()): label.set_weight('bold')
-ax4.grid(True, which='both', linestyle='-', linewidth=0.75, alpha=0.7)
-ax4.legend(loc='lower right', prop={'weight': 'bold', 'size': 13}, framealpha=0.9)
-fig4.tight_layout()
-fig4.savefig('Fig4_Zero_Shot_Adaptability.png', dpi=1200, bbox_inches='tight')
-plt.close(fig4)
-
-# --- FIGURE 5: Rate-Energy Pareto Frontier ---
-fig5, ax5 = plt.subplots(figsize=(8, 6))
-achievable_rate = np.linspace(2, 10, 100)
-baseline_drl_energy = 10.0 - 0.5 * achievable_rate
-gfm_edge_energy = 7.77 - 0.485 * achievable_rate
-ax5.plot(achievable_rate, baseline_drl_energy, label='Baseline DRL', color='#1f77b4', linewidth=3.0)
-ax5.plot(achievable_rate, gfm_edge_energy, label='Proposed GFM-Edge', color='#ff7f0e', linewidth=3.0)
-ax5.set_xlabel(r'Achievable Rate $R$ (bps/Hz)', weight='bold', labelpad=10)
-ax5.set_ylabel(r'Energy Consumption $E$ (Joule)', weight='bold', labelpad=10)
-for label in (ax5.get_xticklabels() + ax5.get_yticklabels()): label.set_weight('bold')
-ax5.grid(True, which='both', linestyle='-', linewidth=0.75, alpha=0.7)
-ax5.legend(loc='upper right', prop={'weight': 'bold', 'size': 13}, framealpha=0.9)
-fig5.tight_layout()
-fig5.savefig('Fig5_Pareto_Frontier.png', dpi=1200, bbox_inches='tight')
-plt.close(fig5)
-
-print("All 6 figures generated locally and saved to your workspace successfully!")
+print("All 5 figures generated locally and saved to your workspace successfully!")
