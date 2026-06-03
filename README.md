@@ -80,6 +80,47 @@ print("-> All performance execution metrics logged successfully.")
 # STEP 4: COMPILE MANUSCRIPT TABLES (ALIGNED WITH NEW TEXT SPECS)
 # =========================================================================
 print("\n[STEP 4/5] Exporting manuscript structural tables data matrix...")
+# --- Table 1a: Comparative Analysis of Orchestration Paradigms in 6G Networks ---
+data_1a = {
+    'Framework': ['Generative AI', 'Satellite MoE', 'Semantic Review', 'Multi-User DRL', 'SWIPT Network', 'Proposed GFM'],
+    'Channel Model': ['Geometric', 'AWGN', 'Fading', 'Rayleigh', 'LoS', 'Rician + NLOS'],
+    'Learning Model': ['Cloud-based GAI', 'High-VRAM LLM', 'Conceptual', 'Local MADRL', 'Edge MADRL', '3-Layer GFM'],
+    'RIS Treatment': ['None', 'None', 'Passive RIS', 'Phase Opt.', 'Passive STAR', 'Dynamic'],
+    'Deployment': ['Centralized Cloud', 'Space-based', 'None (Theoretical)', 'Terrestrial Edge', 'Joint Edge-User', 'Edge-Native'],
+    'Bottleneck': ['No hardware loops', 'Linguistic reasoning latency', 'No closed-loop', 'Brittle topology tracking', 'Action-space explosion', 'Offline pre-training'],
+    'Measured Performance Gap': ['Lacks real-time optimization', 'High processing delay (>150 ms)', 'No dynamic allocation', 'Stability drops to 40%', 'High inference latency (3.2 ms)', '85% stability; <1 ms latency'],
+    'Ref.': ['6', '7', '9', '29', '31', '—']
+}
+df_1a = pd.DataFrame(data_1a)
+df_1a.to_csv('Table_1a_Comparative_Analysis.csv', index=False)
+
+# --- Table 1b: Summary of Core Mathematical Notations ---
+data_1b = {
+    'Mathematical Symbol': ['N', 'M', 'K', 'G', 'h_r,k^H', 'h_d,k^H', 'w_k', 'Phi', 'theta_m', 'beta_m', 'z', 'epsilon_distill', 'theta', 'E_DRL'],
+    'Architectural / Physical Dimension': [
+        'Number of Transmit Antennas at Base Station',
+        'Number of Passive Reflecting Elements at RIS',
+        'Total Count of Active Co-Channel Edge Users',
+        'Base Station-to-RIS Channel Matrix',
+        'RIS-to-User k Reflected Channel Vector',
+        'Direct Base Station-to-User k Channel Vector',
+        'Spatial Transmit Beamforming Vector for User k',
+        'RIS Passive Phase Shift Reflection Matrix',
+        'Continuous Phase Shift Parameter for Element m',
+        'Amplitude Reflection Coefficient for Element m',
+        'Latent vector sampled from localized Gaussian distribution',
+        'Deterministic energy overhead P_edge * tau_inf',
+        'Trainable weight matrix of the distilled student model',
+        'Baseline energy consumption (total active TX power)'
+    ],
+    'Tensor Space Bounds': [
+        'Z+', 'Z+', 'Z+', 'C^(M x N)', 'C^(1 x M)', 'C^(1 x N)', 'C^(N x 1)', 
+        'C^(M x M)', '0 to 2pi', '[0, 1]', 'R^d', '[0, 1] mJ/bit', 'R^(d x d)', 'R+'
+    ],
+    'Ref': ['29, 31', '29', '6, 10', '29, 31', '29', '27', '32', '9, 31', '31', '31', '4, 32', '20', '12, 20', '31, 37']
+}
+df_1b = pd.DataFrame(data_1b)
+df_1b.to_csv('Table_1b_Mathematical_Notations.csv', index=False)
 
 # --- Table 1c: Comparison of Control Plane Paradigms for 6G Edge Intelligence ---
 data_1c = {
@@ -163,7 +204,7 @@ data_results = {
 df_results = pd.DataFrame(data_results)
 df_results.to_csv('Table_Master_Results_Matrix.csv', index=False)
 
-print("-> Table 1c, 1d, 2a, 2b, and Results Matrix updated and saved successfully.")
+print("-> Table 1a, 1b, 1c, 1d, 2a, 2b, 3 and Results Matrix updated and saved successfully.")
 
 
 # =========================================================================
