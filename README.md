@@ -244,13 +244,3 @@ print("-> Reproduced: 'Figure5_Pareto_FINAL_1200dpi.png'")
 print("\n=========================================================================")
 print("ALL WORKSPACE ARTIFACTS AND PLOTS SUCCESSFULLY GENERATED!")
 print("=========================================================================")
-## 📊 Replication and Full Reproducibility
-
-To demonstrate full reproducibility of all dataset generation, baseline simulations, manuscript tables, and vector figures (1200 DPI) matching the paper exactly, execute the following commands in your terminal:
-
-```bash
-# 1. Install the automatically generated dependencies
-pip install -r requirements.txt
-
-# 2. Run the master reproduction script 
-python reproduce_all.py
