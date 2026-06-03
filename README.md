@@ -1,6 +1,6 @@
 # Generative Foundation Models for Autonomous Resource Optimization in RIS-Assisted SAGIN Edge Intelligence
 
-This repository provides the complete execution environment, dataset tracking vectors, physical channel modeling parameters, and baseline replication scripts for our proposed framework.
+This repository provides the complete execution environment, dataset tracking vectors, physical channel modeling parameters, and baseline replication scripts for the proposed framework.
 
 ---
 
